@@ -1,0 +1,243 @@
+# 商业航天全网追踪配置文件
+# Commercial Aerospace Global Tracking Configuration
+
+# 追踪主题名称
+tracking_name: "商业航天全网追踪"
+
+# 追踪描述
+tracking_description: "工作日检索优先级清单（已新增SpaceX/马斯克）"
+
+# 是否启用追踪
+enabled: true
+
+# 工作日提醒时段（24小时制）
+reminder_schedule:
+  - time: "09:00"
+    description: "早间提醒"
+  - time: "14:00"
+    description: "下午提醒"
+  - time: "18:00"
+    description: "晚间提醒"
+
+# 信源检索优先级（从高到低）
+source_priorities:
+  # 第一梯队（核心权威信源，必查）
+  tier1:
+    name: "核心权威信源"
+    priority: 1
+    sources:
+      - name: "杭州市政府官网"
+        url: "http://www.hangzhou.gov.cn"
+        type: "government"
+        description: "项目开工/签约公告、政策文件"
+      - name: "钱塘区政府产业园区公告"
+        url: "http://www.qiantang.gov.cn"
+        type: "government"
+        description: "产业园区公告、企业入驻信息"
+      - name: "箭元科技官方网站"
+        url: "https://www.jianyuan-tech.com"
+        type: "company_official"
+        description: "企业重大动态、技术进展"
+      - name: "箭元科技官方公众号"
+        type: "company_official"
+        platform: "wechat"
+        description: "官方发布、产品更新"
+      - name: "钱塘发布官方公众号"
+        type: "government"
+        platform: "wechat"
+        description: "地方政策解读、项目动态"
+      - name: "SpaceX官方网站"
+        url: "https://www.spacex.com"
+        type: "company_official"
+        description: "发射计划、技术突破、量产进展"
+      - name: "SpaceX官方X账号"
+        url: "https://x.com/SpaceX"
+        type: "company_official"
+        platform: "x"
+        description: "实时动态、发射直播"
+      - name: "SpaceX官方YouTube频道"
+        url: "https://www.youtube.com/@SpaceX"
+        type: "company_official"
+        platform: "youtube"
+        description: "发射回放、技术演示"
+      - name: "埃隆·马斯克个人X账号"
+        url: "https://x.com/elonmusk"
+        type: "personal"
+        platform: "x"
+        description: "核心言论、商业航天/星舰/火星计划"
+      - name: "杭萧钢构"
+        type: "listed_company"
+        code: "600477"
+        description: "上市公司业务关联公告"
+      - name: "航天电子"
+        type: "listed_company"
+        code: "600879"
+        description: "上市公司业务关联公告"
+
+  # 第二梯队（权威媒体信源，重点查）
+  tier2:
+    name: "权威媒体信源"
+    priority: 2
+    sources:
+      - name: "新华社"
+        url: "http://www.xinhuanet.com"
+        type: "media"
+        description: "权威报道解读"
+      - name: "科技日报"
+        url: "http://www.stdaily.com"
+        type: "media"
+        description: "产业政策解读"
+      - name: "科创板日报"
+        type: "media"
+        description: "上市公司相关报道"
+      - name: "杭州新闻"
+        type: "media"
+        description: "地方权威报道"
+      - name: "潮新闻"
+        type: "media"
+        description: "项目细节补充"
+
+  # 第三梯队（行业垂直信源，补充查）
+  tier3:
+    name: "行业垂直信源"
+    priority: 3
+    sources:
+      - name: "航天爱好者网"
+        type: "industry_media"
+        description: "技术进展、产业链信息"
+      - name: "商业航天观察"
+        type: "industry_media"
+        description: "行业分析、市场动态"
+      - name: "产业链配套企业官方账号"
+        type: "company_official"
+        description: "上下游联动消息"
+
+  # 第四梯队（社交媒体信源，筛选查）
+  tier4:
+    name: "社交媒体信源"
+    priority: 4
+    sources:
+      - name: "微博热搜"
+        type: "social_media"
+        platform: "weibo"
+        description: "热点舆情、需交叉验证"
+      - name: "知乎话题"
+        type: "social_media"
+        platform: "zhihu"
+        description: "商业航天相关讨论"
+      - name: "抖音企业官方账号"
+        type: "social_media"
+        platform: "douyin"
+        description: "项目现场动态"
+
+# 关键词检索优先级（从高到低）
+keyword_priorities:
+  # 核心绑定关键词（精准匹配，优先触发提醒）
+  core_keywords:
+    name: "核心绑定关键词"
+    priority: 1
+    keywords:
+      - "钱塘号"
+      - "箭元科技"
+      - "商业航天"
+      - "超级工厂"
+      - "火箭回收"
+      - "箭体结构件"
+      - "SpaceX"
+      - "马斯克"
+      - "Elon Musk"
+      - "星舰"
+      - "Starship"
+
+  # 拓展关联关键词（补充匹配，丰富信息维度）
+  extended_keywords:
+    name: "拓展关联关键词"
+    priority: 2
+    keywords:
+      - "重大项目开工"
+      - "产业签约"
+      - "航天产业链"
+      - "高端装备制造"
+      - "新材料供应"
+      - "临海产业基地"
+      - "星链"
+      - "Starlink"
+      - "可重复使用火箭"
+      - "Gigafactory"
+      - "IPO计划"
+      - "火星计划"
+      - "Mars Mission"
+      - "发射计划"
+      - "技术突破"
+
+# SpaceX/马斯克特别关注内容
+spacex_focus:
+  enabled: true
+  focus_areas:
+    - name: "与中国商业航天的竞争格局"
+      keywords: ["中国", "竞争", "对比", "vs"]
+    - name: "技术路线对比分析"
+      keywords: ["技术路线", "可重复使用", "回收技术"]
+    - name: "全球发射市场份额变化"
+      keywords: ["市场份额", "发射次数", "商业发射"]
+    - name: "星舰发射进展"
+      keywords: ["星舰", "Starship", "试飞", "发射"]
+    - name: "星链部署进展"
+      keywords: ["星链", "Starlink", "卫星", "部署"]
+    - name: "马斯克核心言论"
+      keywords: ["马斯克", "Elon Musk", "言论", "宣布"]
+
+# 执行规则
+execution_rules:
+  # 检索顺序
+  search_order:
+    - "source_priority"  # 先按信源优先级
+    - "keyword_priority"  # 再按关键词优先级
+
+  # 去重规则
+  deduplication:
+    enabled: true
+    rule: "tier1_first"  # 相同信息以第一梯队信源为准
+    remove_duplicates: true  # 剔除重复内容
+
+  # 内容过滤
+  content_filter:
+    enabled: true
+    rules:
+      - "only_relevant"  # 仅保留与商业航天产业、核心标的相关的有效信息
+      - "exclude_irrelevant"  # 排除不相关内容
+
+  # 提醒触发条件
+  alert_conditions:
+    tier1:
+      match_any: true  # 第一梯队信源匹配任何关键词即触发
+    tier2:
+      require_core_keyword: true  # 第二梯队需要核心关键词
+    tier3:
+      require_multiple_matches: 2  # 第三梯队需要多个关键词匹配
+    tier4:
+      require_cross_validation: true  # 第四梯队需要交叉验证
+
+# 数据输出配置
+output:
+  format:
+    - "html"  # HTML格式输出
+    - "txt"   # 文本格式输出
+  include_source_info: true  # 包含信源信息
+  include_priority_info: true  # 包含优先级信息
+  include_timestamp: true  # 包含时间戳
+
+# 通知配置
+notification:
+  enabled: true
+  channels:
+    - "feishu"
+    - "dingtalk"
+  message_template: |
+    【商业航天追踪提醒】
+    时间：{timestamp}
+    优先级：{priority}
+    信源：{source}
+    关键词：{keywords}
+    标题：{title}
+    链接：{url}
